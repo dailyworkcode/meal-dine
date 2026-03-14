@@ -1,0 +1,28 @@
+{
+  "placeholderImages": [
+    {
+      "id": "breakfast",
+      "description": "A delicious Indian breakfast spread, possibly with idli or dosa.",
+      "imageUrl": "https://images.unsplash.com/photo-1589786741892-824d46e61d61?auto=format&fit=crop&q=80&w=1080",
+      "imageHint": "indian breakfast"
+    },
+    {
+      "id": "lunch",
+      "description": "A hearty Indian lunch thali with various curries and rice.",
+      "imageUrl": "https://images.unsplash.com/photo-1725167260486-255a40ce00e3?auto=format&fit=crop&q=80&w=1080",
+      "imageHint": "indian thali"
+    },
+    {
+      "id": "snacks",
+      "description": "A delightful Indian snack like samosas or pakoras.",
+      "imageUrl": "https://images.unsplash.com/photo-1565021510234-27b6d168bba0?auto=format&fit=crop&q=80&w=1080",
+      "imageHint": "indian snacks"
+    },
+    {
+      "id": "dinner",
+      "description": "A warm and comforting Indian dinner, like paneer butter masala with naan.",
+      "imageUrl": "https://images.unsplash.com/photo-1724431095191-e7e7c348bcd7?auto=format&fit=crop&q=80&w=1080",
+      "imageHint": "indian dinner"
+    }
+  ]
+}
