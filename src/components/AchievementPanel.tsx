@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useXP } from '@/hooks/useXP';
 import { getLevelProgress } from '@/lib/xp';
 import { cn } from '@/lib/utils';
+import { useTranslations } from 'next-intl';
 
 export const ACHIEVEMENTS = [
     { id: 'hydration_novice', title: 'Hydration Novice', description: 'Log your first water intake', icon: Droplets, color: 'text-blue-500', bg: 'bg-blue-500/10' },
@@ -19,6 +20,7 @@ export const ACHIEVEMENTS = [
 ];
 
 export function AchievementPanel() {
+    const t = useTranslations('AchievementPanel');
     const { xp, level } = useXP();
     const [unlocked, setUnlocked] = React.useState<Achievement[]>([]);
     const [isLoading, setIsLoading] = React.useState(true);
@@ -48,17 +50,17 @@ export function AchievementPanel() {
                                     {level}
                                 </div>
                                 <div>
-                                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Current Level</p>
-                                    <h4 className="text-xl font-black font-headline tracking-tight">Warrior Status</h4>
+                                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">{t('currentLevel')}</p>
+                                    <h4 className="text-xl font-black font-headline tracking-tight">{t('warriorStatus')}</h4>
                                 </div>
                             </div>
                             <div className="text-right">
-                                <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">{xp} Total XP</p>
+                                <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">{t('totalXP', { xp })}</p>
                             </div>
                         </div>
                         <div className="space-y-2">
                             <div className="flex justify-between text-[10px] font-black uppercase tracking-widest text-primary/60">
-                                <span>Next Level Progress</span>
+                                <span>{t('nextLevel')}</span>
                                 <span>{levelProgress}%</span>
                             </div>
                             <Progress value={levelProgress} className="h-3 rounded-full bg-primary/10 shadow-inner" />
@@ -72,13 +74,13 @@ export function AchievementPanel() {
                                 <Trophy className="w-6 h-6" />
                             </div>
                             <div>
-                                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-600">Milestone Hub</p>
-                                <h4 className="text-xl font-black font-headline tracking-tight">Achievements Unlocked</h4>
+                                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-600">{t('milestoneHub')}</p>
+                                <h4 className="text-xl font-black font-headline tracking-tight">{t('achievementsUnlocked')}</h4>
                             </div>
                         </div>
                         <div className="space-y-2">
                             <div className="flex justify-between text-[10px] font-black uppercase tracking-widest text-amber-600/60">
-                                <span>Completion</span>
+                                <span>{t('completion')}</span>
                                 <span>{Math.round(milestoneProgress)}%</span>
                             </div>
                             <Progress value={milestoneProgress} className="h-3 rounded-full bg-amber-500/10 shadow-inner" />
@@ -117,8 +119,8 @@ export function AchievementPanel() {
                                         )}
                                     </div>
                                     <div>
-                                        <h4 className="font-black font-headline uppercase tracking-widest text-xs mb-1">{ach.title}</h4>
-                                        <p className="text-[10px] text-muted-foreground font-medium leading-tight">{ach.description}</p>
+                                        <h4 className="font-black font-headline uppercase tracking-widest text-xs mb-1">{t(`titles.${ach.id}`)}</h4>
+                                        <p className="text-[10px] text-muted-foreground font-medium leading-tight">{t(`descriptions.${ach.id}`)}</p>
                                     </div>
                                 </div>
                             </motion.div>

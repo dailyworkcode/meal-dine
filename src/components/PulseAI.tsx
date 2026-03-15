@@ -61,14 +61,14 @@ export function PulseAI() {
     }, [habits, waterIntake, userProfile, zenJournal]); // Added zenJournal to dependencies
 
     return (
-        <div className="fixed bottom-28 right-8 z-[100] flex flex-col items-end gap-4">
+        <div className="fixed bottom-52 md:bottom-32 right-6 md:right-8 z-[100] flex flex-col items-end gap-4">
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
                         initial={{ opacity: 0, y: 20, scale: 0.9, filter: 'blur(10px)' }}
                         animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
                         exit={{ opacity: 0, y: 20, scale: 0.9, filter: 'blur(10px)' }}
-                        className="w-80"
+                        className="w-[calc(100vw-3rem)] sm:w-80"
                     >
                         <Card className="glass-card p-6 relative overflow-hidden group">
                             <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
@@ -125,13 +125,13 @@ export function PulseAI() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-16 h-16 rounded-full bg-primary text-primary-foreground shadow-2xl flex items-center justify-center relative group"
+                className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-tr from-primary to-purple-500 text-white shadow-[0_0_30px_-5px_rgba(var(--primary-rgb),0.5)] flex items-center justify-center relative group overflow-hidden"
             >
-                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                {isOpen ? <X className="w-8 h-8 relative z-10" /> : <MessageCircle className="w-8 h-8 relative z-10" />}
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 rounded-full" />
+                {isOpen ? <X className="w-6 h-6 md:w-8 md:h-8 relative z-10" /> : <MessageCircle className="w-6 h-6 md:w-8 md:h-8 relative z-10" />}
 
                 {!isOpen && (
-                    <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full border-2 border-background animate-pulse" />
+                    <span className="absolute -top-1 -right-1 w-4 h-4 md:w-5 md:h-5 bg-red-500 rounded-full border-2 border-background animate-pulse" />
                 )}
             </motion.button>
         </div>

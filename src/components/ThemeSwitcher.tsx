@@ -30,13 +30,13 @@ export function ThemeSwitcher() {
                                 <button
                                     onClick={() => setPreference(t.id)}
                                     className={cn(
-                                        "relative p-2 rounded-full transition-all duration-500 hover:scale-110 active:scale-95",
+                                        "relative p-1.5 md:p-2 rounded-full transition-all duration-500 hover:scale-110 active:scale-95",
                                         isActive
                                             ? "text-primary bg-white/40 dark:bg-white/10 shadow-inner"
                                             : "text-muted-foreground/60 hover:text-foreground hover:bg-white/10 dark:hover:bg-white/5"
                                     )}
                                 >
-                                    <Icon className="w-5 h-5 relative z-10" />
+                                    <Icon className="w-4 h-4 md:w-5 md:h-5 relative z-10" />
                                     {isActive && (
                                         <motion.div
                                             layoutId="activeTheme"

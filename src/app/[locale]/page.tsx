@@ -20,7 +20,7 @@ import { WellnessQuote } from '@/components/WellnessQuote';
 import { WellnessRitualCard } from '@/components/WellnessRitualCard';
 import { ZenJournal } from '@/components/ZenJournal';
 import { SocialHub } from '@/components/SocialHub';
-import { InstallPWA } from '@/components/InstallPWA';
+
 import { WellnessGarden } from '@/components/WellnessGarden';
 import { useToast } from '@/hooks/use-toast';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
@@ -181,8 +181,8 @@ export default function LandingPage() {
                     <RemindersManager />
                     <header className="sticky top-0 z-50 w-full border-b border-primary/10 bg-background/80 backdrop-blur-xl">
                         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-                            <div className="flex items-center gap-2 group cursor-pointer">
-                                <div className="w-12 h-12 relative bg-primary rounded-2xl flex items-center justify-center text-primary-foreground shadow-lg shadow-primary/20 group-hover:rotate-6 transition-transform overflow-hidden">
+                            <div className="flex items-center gap-2 group cursor-pointer shrink-0">
+                                <div className="w-10 h-10 md:w-12 md:h-12 relative bg-primary rounded-2xl flex items-center justify-center text-primary-foreground shadow-lg shadow-primary/20 group-hover:rotate-6 transition-transform overflow-hidden">
                                     <Image
                                         src="/assets/logo.png"
                                         alt="DailyDine Plus Logo"
@@ -190,22 +190,22 @@ export default function LandingPage() {
                                         className="object-cover p-2"
                                     />
                                 </div>
-                                <div className="flex flex-col -space-y-1">
-                                    <span className="text-2xl font-black font-headline tracking-tighter text-foreground">DailyDine Plus</span>
+                                <div className="flex flex-col -space-y-1 hidden sm:flex">
+                                    <span className="text-xl md:text-2xl font-black font-headline tracking-tighter text-foreground whitespace-nowrap">{t('logoText')}</span>
                                     <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary animate-pulse">{timeLabel}</span>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-1 sm:gap-2 md:gap-4 overflow-x-auto no-scrollbar shrink-0">
                                 <ThemeSwitcher />
                                 <LanguageSwitcher />
                                 <Magnetic>
                                     <Button
                                         variant="ghost"
                                         size="icon"
-                                        className="rounded-full h-12 w-12 hover:bg-primary/5"
+                                        className="rounded-full h-10 w-10 md:h-12 md:w-12 hover:bg-primary/5"
                                         onClick={() => setIsProfileOpen(true)}
                                     >
-                                        <UserCircle className="h-8 w-8 text-foreground/70" />
+                                        <UserCircle className="h-6 w-6 md:h-8 md:w-8 text-foreground/70" />
                                     </Button>
                                 </Magnetic>
                                 <Magnetic>
@@ -213,10 +213,10 @@ export default function LandingPage() {
                                         variant="ghost"
                                         size="icon"
                                         asChild
-                                        className="rounded-full h-12 w-12 hover:bg-primary/5"
+                                        className="rounded-full h-10 w-10 md:h-12 md:w-12 hover:bg-primary/5 hidden sm:flex"
                                     >
                                         <Link href="/dashboard">
-                                            <LayoutDashboard className="h-6 w-6 text-foreground/70" />
+                                            <LayoutDashboard className="h-5 w-5 md:h-6 md:w-6 text-foreground/70" />
                                         </Link>
                                     </Button>
                                 </Magnetic>
@@ -228,18 +228,18 @@ export default function LandingPage() {
                         {/* Hero Section */}
                         <section className="relative overflow-hidden rounded-[4rem] bg-gradient-to-br from-primary/5 via-transparent to-primary/5 border border-primary/10 p-1 shadow-2xl">
                             <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
-                            <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-center p-8 md:p-20">
+                            <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center p-6 md:p-12 lg:p-20">
                                 <div className="space-y-10 text-center lg:text-left">
                                     <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/10 border border-primary/20 animate-float shadow-sm">
                                         <Sparkles className="w-4 h-4 text-primary" />
                                         <span className="text-xs font-black uppercase tracking-[0.2em] text-primary">{t('heroBadge')}</span>
                                     </div>
-                                    <h1 className="text-6xl md:text-8xl font-black font-headline text-foreground leading-[0.9] tracking-tighter">
+                                    <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black font-headline text-foreground leading-[0.9] tracking-tighter">
                                         {t('heroTitle').split(' ').map((word, i) => (
-                                            <span key={i} className={i === 1 ? "text-primary block" : "block"}>{word}</span>
+                                            <span key={i} className={i === 1 ? "text-primary inline lg:block" : "inline lg:block mr-2 lg:mr-0"}>{word}</span>
                                         ))}
                                     </h1>
-                                    <p className="text-xl text-muted-foreground font-medium max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                                    <p className="text-base md:text-xl text-muted-foreground font-medium max-w-lg mx-auto lg:mx-0 leading-relaxed">
                                         {t('heroSubtitle')}
                                     </p>
                                     <div className="flex flex-col sm:flex-row items-center gap-5 justify-center lg:justify-start pt-4">
@@ -296,7 +296,7 @@ export default function LandingPage() {
                         <WellnessOverview />
 
                         {/* The Living Garden */}
-                        <div className="pt-12">
+                        <div className="pt-6 md:pt-12">
                             <WellnessGarden />
                         </div>
 
@@ -304,13 +304,13 @@ export default function LandingPage() {
                         <div className="text-center space-y-6 pt-12">
                             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20">
                                 <Zap className="w-3.5 h-3.5 text-primary" />
-                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">Core Modules</span>
+                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">{t('coreModulesBadge')}</span>
                             </div>
-                            <h2 className="text-6xl font-black font-headline tracking-tighter text-foreground leading-none">{t('modulesTitle')}</h2>
-                            <p className="text-muted-foreground font-medium max-w-2xl mx-auto text-lg">{t('modulesSubtitle')}</p>
+                            <h2 className="text-4xl md:text-6xl font-black font-headline tracking-tighter text-foreground leading-none">{t('modulesTitle')}</h2>
+                            <p className="text-muted-foreground font-medium max-w-2xl mx-auto text-base md:text-lg">{t('modulesSubtitle')}</p>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
                             <div className="lg:col-span-2">
                                 <WellnessRitualCard />
                             </div>
@@ -339,36 +339,36 @@ export default function LandingPage() {
                                 actionLabel={t('viewModule')}
                             />
                             <ModuleCard
-                                title="Hydration Hub"
-                                description="Track your fluid intake and optimize your hydration levels with wave-animated insights."
+                                title={t('hydrationTitle')}
+                                description={t('hydrationDesc')}
                                 icon={<Droplets className="w-6 h-6" />}
                                 image="/assets/hydration-module.png"
                                 href="/hydration"
-                                actionLabel="Optimize Fluids"
+                                actionLabel={t('hydrationAction')}
                             />
                             <ModuleCard
-                                title="Zen Practice"
-                                description="Improve focus and reduce stress with interactive guided breathing exercises."
+                                title={t('serenityTitle')}
+                                description={t('serenityDesc')}
                                 icon={<Wind className="w-6 h-6" />}
                                 image="/assets/serenity-module.png"
                                 href="/serenity"
-                                actionLabel="Start Zen"
+                                actionLabel={t('serenityAction')}
                             />
                             <ModuleCard
-                                title="AI Food Vision"
-                                description="Take a photo of your meal to get instant nutritional breakdown and macro estimates."
+                                title={t('visionTitle')}
+                                description={t('visionDesc')}
                                 icon={<Brain className="w-6 h-6" />}
                                 image="/assets/vision-module.png"
                                 href="/vision"
-                                actionLabel="Scan Meal"
+                                actionLabel={t('visionAction')}
                             />
                             <ModuleCard
-                                title="Sleep & Recovery"
-                                description="Track your circadian rhythm and optimize recovery with AI-driven sleep insights."
+                                title={t('sleepTitle')}
+                                description={t('sleepDesc')}
                                 icon={<Moon className="w-6 h-6" />}
                                 image="/assets/sleep-module.png"
                                 href="/sleep"
-                                actionLabel="Analyze Sleep"
+                                actionLabel={t('sleepAction')}
                             />
                         </div>
 
@@ -398,7 +398,7 @@ export default function LandingPage() {
                                 </div>
                             </div>
                         </div>
-                        <InstallPWA />
+
                     </main>
 
                     {/* Premium Footer */}
@@ -413,13 +413,13 @@ export default function LandingPage() {
                                         className="object-cover p-1.5"
                                     />
                                 </div>
-                                <span className="text-2xl font-black font-headline tracking-tighter">DailyDine Plus</span>
+                                <span className="text-2xl font-black font-headline tracking-tighter">{t('logoText')}</span>
                             </div>
-                            <p className="text-muted-foreground text-sm font-medium tracking-wide">© 2026 DailyDine Plus. Crafted for Mindful Living.</p>
+                             <p className="text-muted-foreground text-sm font-medium tracking-wide">{t('footerCopyright')}</p>
                             <div className="flex justify-center gap-8 text-xs font-black uppercase tracking-widest text-muted-foreground/50">
-                                <span className="cursor-pointer hover:text-primary transition-colors">Privacy</span>
-                                <span className="cursor-pointer hover:text-primary transition-colors">Terms</span>
-                                <span className="cursor-pointer hover:text-primary transition-colors">Support</span>
+                                <span className="cursor-pointer hover:text-primary transition-colors">{t('footerPrivacy')}</span>
+                                <span className="cursor-pointer hover:text-primary transition-colors">{t('footerTerms')}</span>
+                                <span className="cursor-pointer hover:text-primary transition-colors">{t('footerSupport')}</span>
                             </div>
                         </div>
                     </footer>

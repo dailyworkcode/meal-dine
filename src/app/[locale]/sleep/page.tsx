@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft, Moon, Sparkles, Zap, BatteryLow, BatteryFull } from 'lucide-react';
 import { GlassParallax } from '@/components/GlassParallax';
 import { SleepTracker } from '@/components/SleepTracker';
+import { SleepAudioPlayer } from '@/components/SleepAudioPlayer';
 import { motion } from 'framer-motion';
 
 export default function SleepPage() {
@@ -83,6 +84,14 @@ export default function SleepPage() {
                                 transition={{ delay: 0.2 }}
                             >
                                 <SleepTracker />
+                            </motion.div>
+
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.3 }}
+                            >
+                                <SleepAudioPlayer />
                             </motion.div>
 
                             {/* Recovery Insights */}

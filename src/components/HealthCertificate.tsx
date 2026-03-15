@@ -49,8 +49,8 @@ export function HealthCertificate({ score, points, userName, onClose }: HealthCe
                 <Card className="w-full bg-white/50 dark:bg-black/50 backdrop-blur-md border-2 border-primary/20 rounded-[2rem] p-8 mb-10 shadow-inner">
                     <div className="grid grid-cols-2 gap-8">
                         <div className="space-y-1">
-                            <p className="text-xs font-black uppercase tracking-tighter text-muted-foreground">Certified To</p>
-                            <p className="text-xl font-bold text-foreground">{userName || 'Wellness Explorer'}</p>
+                            <p className="text-xs font-black uppercase tracking-tighter text-muted-foreground">{t('certifiedTo')}</p>
+                            <p className="text-xl font-bold text-foreground">{userName || t('wellnessExplorer')}</p>
                         </div>
                         <div className="space-y-1">
                             <p className="text-xs font-black uppercase tracking-tighter text-muted-foreground">{t('certificateDate')}</p>
@@ -82,7 +82,7 @@ export function HealthCertificate({ score, points, userName, onClose }: HealthCe
                         onClick={onClose}
                         className="flex-1 h-14 rounded-2xl font-bold shadow-xl shadow-primary/20"
                     >
-                        Done
+                        {t('done')}
                     </Button>
                 </div>
             </motion.div>

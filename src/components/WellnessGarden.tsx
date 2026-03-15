@@ -8,8 +8,10 @@ import { getHydration } from '@/lib/storage';
 import { getTodayKey, cn } from '@/lib/utils';
 import { Flower2, Leaf, CloudRain, Sun, Wind } from 'lucide-react';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { useTranslations } from 'next-intl';
 
 export function WellnessGarden() {
+    const t = useTranslations('WellnessGarden');
     const { xp } = useXP();
     const [hydration, setHydration] = React.useState(0);
     const [habits] = useLocalStorage<any>('dailyHabits', {});
@@ -30,11 +32,11 @@ export function WellnessGarden() {
 
     return (
         <Card className="glass-premium border-none rounded-[3rem] overflow-hidden shadow-2xl bg-gradient-to-b from-sky-400/10 to-emerald-400/10">
-            <CardHeader className="p-8 pb-0">
+            <CardHeader className="p-6 md:p-8 pb-0">
                 <div className="flex items-center justify-between">
                     <div>
-                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-600">The Living Sanctuary</p>
-                        <h3 className="text-3xl font-black font-headline tracking-tighter">Your Wellness Garden</h3>
+                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-600">{t('sanctuary')}</p>
+                        <h3 className="text-xl md:text-3xl font-black font-headline tracking-tighter">{t('title')}</h3>
                     </div>
                     <div className="flex gap-2">
                         <Sun className="w-5 h-5 text-amber-500 animate-pulse-slow" />
@@ -42,7 +44,7 @@ export function WellnessGarden() {
                     </div>
                 </div>
             </CardHeader>
-            <CardContent className="p-8 relative h-[300px] flex items-end justify-around gap-4">
+            <CardContent className="p-6 md:p-8 relative h-[250px] md:h-[300px] flex items-end justify-around gap-2 md:gap-4 overflow-hidden">
                 {/* Background Hill */}
                 <div className="absolute bottom-0 left-0 right-0 h-24 bg-emerald-500/10 rounded-t-[100%] scale-x-125" />
 
@@ -91,7 +93,7 @@ function Plant({ label, stage, maxStage, color, icon }: { label: string, stage: 
     return (
         <div className="relative group flex flex-col items-center">
             <div className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap bg-background/80 backdrop-blur px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border border-primary/10">
-                {label} (Lvl {stage})
+                {useTranslations('WellnessGarden')('plantLvl', { label, stage })}
             </div>
 
             <div className="flex flex-col items-center gap-0">
@@ -102,9 +104,11 @@ function Plant({ label, stage, maxStage, color, icon }: { label: string, stage: 
                         animate={{ scale: 1, y: 0 }}
                         transition={{ delay: i * 0.1, type: "spring" }}
                         className={cn(color, "relative")}
-                        style={{ marginBottom: i === 0 ? 0 : -10 }}
+                        style={{ marginBottom: i === 0 ? 0 : -8 }}
                     >
-                        {icon}
+                        <div className="scale-75 md:scale-100">
+                            {icon}
+                        </div>
                         {i === stage - 1 && (
                             <motion.div
                                 animate={{ scale: [1, 1.2, 1] }}
@@ -117,12 +121,12 @@ function Plant({ label, stage, maxStage, color, icon }: { label: string, stage: 
                     </motion.div>
                 ))}
                 {stage === 0 && (
-                    <div className="w-4 h-4 bg-emerald-700/20 rounded-full blur-[2px]" />
+                    <div className="w-3 h-3 md:w-4 md:h-4 bg-emerald-700/20 rounded-full blur-[2px]" />
                 )}
             </div>
 
             {/* Base */}
-            <div className="w-12 h-2 bg-emerald-900/10 rounded-full mt-1" />
+            <div className="w-8 md:w-12 h-1.5 md:h-2 bg-emerald-900/10 rounded-full mt-1" />
         </div>
     );
 }

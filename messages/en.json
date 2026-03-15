@@ -79,7 +79,29 @@
     "avergeStatus": "AVG",
     "historyTitle": "History is being forged...",
     "viewChronicle": "View Full Chronicle",
-    "goalAttained": "Goal Attained"
+    "goalAttained": "Goal Attained",
+    "certifiedTo": "Certified To",
+    "wellnessExplorer": "Wellness Explorer",
+    "done": "Done"
+  },
+  "AchievementGallery": {
+    "title": "Ascension Gallery",
+    "perfect-day": {
+      "title": "Perfect Pulse",
+      "description": "Complete all daily habits"
+    },
+    "hydration-hero": {
+      "title": "Hydration Hero",
+      "description": "Reach daily water goal"
+    },
+    "zen-student": {
+      "title": "Zen Student",
+      "description": "Complete a breathing session"
+    },
+    "energy-surge": {
+      "title": "Energy Surge",
+      "description": "Complete a yoga session"
+    }
   },
   "HomePage": {
     "title": "Today's Meal Plan",
@@ -176,7 +198,25 @@
     "suggestionsDesc": "Coming Soon: Intelligent insights for your lifestyle evolution.",
     "viewModule": "Begin Journey",
     "upcomingBadge": "Deepening",
-    "notifyAction": "Be Notified"
+    "notifyAction": "Be Notified",
+    "logoText": "DailyDine Plus",
+    "coreModulesBadge": "Core Modules",
+    "hydrationTitle": "Hydration Hub",
+    "hydrationDesc": "Track your fluid intake and optimize your hydration levels with wave-animated insights.",
+    "hydrationAction": "Optimize Fluids",
+    "serenityTitle": "Zen Practice",
+    "serenityDesc": "Improve focus and reduce stress with interactive guided breathing exercises.",
+    "serenityAction": "Start Zen",
+    "visionTitle": "AI Food Vision",
+    "visionDesc": "Take a photo of your meal to get instant nutritional breakdown and macro estimates.",
+    "visionAction": "Scan Meal",
+    "sleepTitle": "Sleep & Recovery",
+    "sleepDesc": "Track your circadian rhythm and optimize recovery with AI-driven sleep insights.",
+    "sleepAction": "Analyze Sleep",
+    "footerCopyright": "© 2026 DailyDine Plus. Crafted for Mindful Living.",
+    "footerPrivacy": "Privacy",
+    "footerTerms": "Terms",
+    "footerSupport": "Support"
   },
   "YogaPage": {
     "welcomeTitle": "Your Personal Yoga Studio",
@@ -272,6 +312,42 @@
     "success": "Recipe Refined!",
     "error": "Failed to refine recipe."
   },
+  "FoodScanner": {
+    "title": "Food Scanner",
+    "uploadTitle": "Capture or Upload",
+    "uploadDesc": "Select a photo of your meal to analyze",
+    "newScan": "New Scan",
+    "analyzing": "AI is analyzing...",
+    "loadingDesc": "Identifying ingredients and calculating macros",
+    "detectionFound": "Detection Found",
+    "calories": "Calories",
+    "protein": "Protein",
+    "carbs": "Carbs",
+    "fats": "Fats",
+    "healthInsights": "Health Insights",
+    "detectedIngredients": "Detected Ingredients",
+    "placeholder": "Upload a photo to see nutritional data displayed here"
+  },
+  "WellnessGarden": {
+    "title": "Your Wellness Garden",
+    "sanctuary": "The Living Sanctuary",
+    "plantLvl": "{label} (Lvl {stage})"
+  },
+  "WellnessOverview": {
+    "wellnessScore": "Wellness Score",
+    "levelingUp": "Leveling Up Your Health",
+    "habitsSubtitle": "Small consistent actions lead to massive health transformations.",
+    "share": "SHARE",
+    "scoreLabel": "Score",
+    "wellnessPoints": "Wellness Points (Total XP)",
+    "streak": "{streak} DAY STREAK",
+    "level": "LEVEL {level}",
+    "viewChronicle": "View Full Chronicle",
+    "sharedToast": "Shared Successfully!",
+    "sharedToastDesc": "Bonus XP awarded!",
+    "copiedToast": "Link Copied!",
+    "copiedToastDesc": "Share it with friends manually."
+  },
   "Reminders": {
     "hydrationTitle": "Time to Hydrate 💧",
     "hydrationBody": "Stay on track! Have a glass of water now.",
@@ -279,5 +355,67 @@
     "yogaBody": "It's time for your daily movement focus.",
     "mealTitle": "Mindful Nourishment 🥗",
     "mealBody": "Ready for dinner? Remember to savor every bite."
+  },
+  "WellnessQuote": {
+    "quotes": [
+      "The food you eat can be either the safest and most powerful form of medicine or the slowest form of poison.",
+      "Health is not just what you're eating. It's also what you're thinking and saying.",
+      "A healthy outside starts from the inside.",
+      "Your body is a temple, but only if you treat it as one.",
+      "Yoga is not just about flexibility, it's about stability and peace.",
+      "Take care of your body. It's the only place you have to live.",
+      "To keep the body in good health is a duty... otherwise we shall not be able to keep our mind strong and clear."
+    ]
+  },
+  "SocialHub": {
+    "title": "Social Hub",
+    "arena": "The Arena",
+    "shareProgress": "Share Progress",
+    "topWarriors": "Top Warriors",
+    "level": "Level",
+    "you": "YOU",
+    "status": "Vitality Guardian",
+    "findCombatants": "Find Combatants",
+    "activeClan": "Active Clan: {clan}",
+    "clanGoal": "Clan Daily Goal: {goal}",
+    "progress": "{current} / {target}",
+    "clanMotto": "\"United in tranquility, stronger in health.\"",
+    "shareTitle": "DailyDine Plus - My Warrior Status",
+    "shareText": "I've reached Level {level} on DailyDine! Build healthy habits with me.",
+    "statusShared": "Status Shared!",
+    "statusSharedDesc": "You've earned 50 XP for spreading the word.",
+    "copied": "Copied to Clipboard!",
+    "copiedDesc": "Share the link with your friends to earn points.",
+    "streak": "{streak} Streak"
+  },
+  "InstallPWA": {
+    "title": "Welcome to the Family!",
+    "desc": "App installed successfully. Enjoy 100 bonus XP!",
+    "takeHome": "Take DailyDine Plus Home",
+    "fullExp": "Full Experience",
+    "install": "INSTALL"
+  },
+  "AchievementPanel": {
+    "currentLevel": "Current Level",
+    "warriorStatus": "Warrior Status",
+    "totalXP": "{xp} Total XP",
+    "nextLevel": "Next Level Progress",
+    "milestoneHub": "Milestone Hub",
+    "achievementsUnlocked": "Achievements Unlocked",
+    "completion": "Completion",
+    "titles": {
+      "hydration_novice": "Hydration Novice",
+      "breathing_master": "Serenity Seeker",
+      "sleep_sage": "Sleep Sage",
+      "visionary_eater": "Visionary Eater",
+      "grocery_guru": "Grocery Guru"
+    },
+    "descriptions": {
+      "hydration_novice": "Log your first water intake",
+      "breathing_master": "Complete a breathing session",
+      "sleep_sage": "Log a night of restorative sleep",
+      "visionary_eater": "Analyze your first meal with AI",
+      "grocery_guru": "Optimize your shopping list"
+    }
   }
 }

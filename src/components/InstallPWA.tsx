@@ -1,14 +1,16 @@
 'use client';
 
 import * as React from 'react';
-import { Download, Smartphone, Check, Sparkles } from 'lucide-react';
+import { Download, Smartphone, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { useXP } from '@/hooks/useXP';
 import { toast } from '@/hooks/use-toast';
+import { useTranslations } from 'next-intl';
 
 export function InstallPWA() {
+    const t = useTranslations('InstallPWA');
     const [deferredPrompt, setDeferredPrompt] = React.useState<any>(null);
     const [isInstalled, setIsInstalled] = React.useState(false);
     const [isVisible, setIsVisible] = React.useState(false);
@@ -36,8 +38,8 @@ export function InstallPWA() {
             setDeferredPrompt(null);
             awardXP(100);
             toast({
-                title: "Welcome to the Family!",
-                description: "App installed successfully. Enjoy 100 bonus XP!",
+                title: t('title'),
+                description: t('desc'),
             });
         };
 
@@ -77,36 +79,50 @@ export function InstallPWA() {
 
     if (!mounted || isInstalled || !isVisible) return null;
 
+    const handleDismiss = () => {
+        setIsVisible(false);
+        setDeferredPrompt(null);
+        (window as any).deferredPrompt = null;
+    };
+
     return (
         <AnimatePresence>
             <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[999] w-[calc(100%-2rem)] max-w-md"
+                initial={{ opacity: 0, y: 50, x: "-50%", scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, x: "-50%", scale: 1 }}
+                exit={{ opacity: 0, y: 50, x: "-50%", scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                className="fixed bottom-6 md:bottom-8 left-1/2 z-[999] w-[calc(100%-2rem)] max-w-sm"
             >
-                <div className="glass-premium p-6 rounded-[2.5rem] shadow-2xl border border-primary/20 flex items-center justify-between gap-6 overflow-hidden relative group">
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-                    <div className="flex items-center gap-4 relative z-10">
-                        <div className="w-14 h-14 bg-primary/20 rounded-2xl flex items-center justify-center text-primary shadow-inner">
-                            <Smartphone className="w-7 h-7" />
+                <div className="glass-premium p-2 pr-3 rounded-[2rem] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] border border-primary/20 flex items-center justify-between gap-3 overflow-hidden relative group bg-background/80 backdrop-blur-3xl">
+                    <div className="flex items-center gap-3 w-full relative z-10">
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-primary to-primary/80 flex items-center justify-center shrink-0 shadow-lg shadow-primary/30">
+                            <Smartphone className="w-6 h-6 text-primary-foreground" />
                         </div>
-                        <div>
-                            <h4 className="text-lg font-black font-headline tracking-tight text-foreground">Take DailyDine Plus Home</h4>
-                            <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest leading-none">Install for the full experience</p>
+                        <div className="flex flex-col overflow-hidden min-w-0 flex-1">
+                            <p className="text-sm font-black font-headline truncate tracking-tight leading-tight">{t('title')}</p>
+                            <p className="text-[10px] font-bold text-muted-foreground truncate uppercase tracking-widest">{t('desc')}</p>
+                        </div>
+                        <div className="flex items-center gap-1.5 shrink-0 pl-2">
+                            <Button 
+                                onClick={handleInstall}
+                                size="sm" 
+                                className="h-9 px-4 rounded-full font-bold shadow-md hover:scale-105 active:scale-95 transition-all bg-primary text-primary-foreground text-xs"
+                            >
+                                <Download className="w-3.5 h-3.5 mr-1.5" />
+                                {t('install')}
+                            </Button>
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                onClick={handleDismiss}
+                                className="h-8 w-8 rounded-full opacity-60 hover:opacity-100 hover:bg-foreground/5 transition-colors"
+                            >
+                                <X className="w-4 h-4" />
+                            </Button>
                         </div>
                     </div>
-
-                    <Button
-                        onClick={handleInstall}
-                        className="rounded-2xl bg-primary hover:bg-primary/90 text-white font-black h-14 px-8 shadow-xl shadow-primary/20 relative z-10 hover:scale-105 active:scale-95 transition-all gap-2"
-                    >
-                        <Download className="w-5 h-5" />
-                        INSTALL
-                    </Button>
-
-                    <div className="absolute -top-4 -right-4 w-20 h-20 bg-primary/5 rounded-full blur-2xl" />
+                    <div className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-50" />
                 </div>
             </motion.div>
         </AnimatePresence>

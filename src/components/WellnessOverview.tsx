@@ -20,7 +20,7 @@ import { TrendingUp, Share2 } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 
 export function WellnessOverview() {
-    const t = useTranslations('Wellness');
+    const t = useTranslations('WellnessOverview');
     const [habits] = useLocalStorage<{ [key: string]: { [habit: string]: boolean } }>('dailyHabits', {});
     const [waterIntake] = useLocalStorage<{ [key: string]: number }>('waterIntake', {});
     const { xp, level } = useXP();
@@ -55,10 +55,10 @@ export function WellnessOverview() {
             if (navigator.share) {
                 await navigator.share(shareData);
                 awardXP(XP_ACTIONS.SOCIAL_SHARE);
-                toast({ title: "Shared Successfully!", description: "Bonus XP awarded!" });
+                toast({ title: t('sharedToast'), description: t('sharedToastDesc') });
             } else {
                 navigator.clipboard.writeText(`${shareData.text} ${shareData.url}`);
-                toast({ title: "Link Copied!", description: "Share it with friends manually." });
+                toast({ title: t('copiedToast'), description: t('copiedToastDesc') });
             }
         } catch (e) {
             console.error("Share failed", e);
@@ -88,25 +88,25 @@ export function WellnessOverview() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {/* Score Card */}
                 <Card className="md:col-span-2 glass dark:glass-dark rounded-[2.5rem] overflow-hidden border-none shadow-xl">
-                    <CardContent className="p-8 flex items-center justify-between gap-8">
-                        <div className="flex flex-col gap-2">
-                            <span className="text-sm font-black uppercase tracking-[0.2em] text-primary/60">{t('wellnessScore')}</span>
-                            <h2 className="text-4xl font-headline font-bold text-foreground">Leveling Up Your Health</h2>
-                            <div className="flex gap-2 items-center">
-                                <p className="text-muted-foreground text-sm max-w-xs">{t('habitsSubtitle')}</p>
+                    <CardContent className="p-6 md:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 md:gap-8">
+                        <div className="flex flex-col gap-2 text-center sm:text-left">
+                            <span className="text-xs md:text-sm font-black uppercase tracking-[0.2em] text-primary/60">{t('wellnessScore')}</span>
+                            <h2 className="text-2xl md:text-4xl font-headline font-bold text-foreground leading-tight">{t('levelingUp')}</h2>
+                            <div className="flex flex-col sm:flex-row gap-2 items-center sm:items-start">
+                                <p className="text-muted-foreground text-xs md:text-sm max-w-[250px]">{t('habitsSubtitle')}</p>
                                 <Button
                                     onClick={handleShare}
                                     variant="ghost"
                                     size="sm"
-                                    className="rounded-full hover:bg-primary/10 text-primary gap-1 font-bold text-[10px]"
+                                    className="rounded-full hover:bg-primary/10 text-primary gap-1 font-bold text-[10px] h-8"
                                 >
                                     <Share2 className="w-3 h-3" />
-                                    SHARE
+                                    {t('share')}
                                 </Button>
                             </div>
                         </div>
 
-                        <div className="relative h-32 w-32 flex items-center justify-center">
+                        <div className="relative h-32 w-32 md:h-40 md:w-40 flex items-center justify-center shrink-0">
                             <svg className="h-full w-full rotate-[-90deg]">
                                 <circle
                                     cx="64"
@@ -130,9 +130,9 @@ export function WellnessOverview() {
                                     className="text-primary transition-all duration-1000 ease-out"
                                 />
                             </svg>
-                            <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                <span className="text-3xl font-black font-headline text-foreground">{score}</span>
-                                <span className="text-[10px] font-bold text-muted-foreground uppercase">Score</span>
+                            <div className="absolute inset-0 flex flex-col items-center justify-center gap-0.5">
+                                <span className="text-4xl md:text-5xl font-black font-headline text-foreground leading-none">{score}</span>
+                                <span className="text-[10px] md:text-xs font-bold text-muted-foreground uppercase">{t('scoreLabel')}</span>
                             </div>
                         </div>
                     </CardContent>
@@ -140,23 +140,23 @@ export function WellnessOverview() {
 
                 {/* Points Card */}
                 <Card className="glass dark:glass-dark rounded-[2.5rem] overflow-hidden border-none shadow-xl bg-gradient-to-br from-primary/10 to-transparent">
-                    <CardContent className="p-8 flex flex-col items-center justify-center text-center gap-4">
-                        <div className="h-16 w-16 rounded-2xl bg-primary/20 flex items-center justify-center text-primary mb-2 shadow-inner">
-                            <Trophy className="w-8 h-8" />
+                    <CardContent className="p-6 md:p-8 flex flex-col items-center justify-center text-center gap-4">
+                        <div className="h-12 w-12 md:h-16 md:w-16 rounded-2xl bg-primary/20 flex items-center justify-center text-primary mb-2 shadow-inner">
+                            <Trophy className="w-6 h-6 md:w-8 md:h-8" />
                         </div>
                         <div className="flex flex-col">
-                            <span className="text-5xl font-black font-headline text-primary tabular-nums">{points}</span>
-                            <span className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">{t('wellnessPoints')} (Total XP)</span>
+                            <span className="text-4xl md:text-5xl font-black font-headline text-primary tabular-nums">{points}</span>
+                            <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">{t('wellnessPoints')} (Total XP)</span>
                         </div>
                         {streak > 0 && (
                             <div className="flex items-center gap-1 px-3 py-1 bg-orange-500/10 rounded-full border border-orange-500/20">
                                 <Activity className="w-3 h-3 text-orange-500" />
-                                <span className="text-[10px] font-bold text-orange-600 uppercase">{streak} DAY STREAK</span>
+                                <span className="text-[10px] font-bold text-orange-600 uppercase">{t('streak', { streak })}</span>
                             </div>
                         )}
                         <div className="flex items-center gap-1 px-3 py-1 bg-primary/10 rounded-full">
                             <Star className="w-3 h-3 text-primary fill-primary" />
-                            <span className="text-[10px] font-bold text-primary">LEVEL {level}</span>
+                            <span className="text-[10px] font-bold text-primary">{t('level', { level })}</span>
                         </div>
                     </CardContent>
                 </Card>

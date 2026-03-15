@@ -23,7 +23,7 @@ export default function LanguageSwitcher() {
   return (
     <div>
       <Select onValueChange={onSelectChange} defaultValue={locale}>
-        <SelectTrigger className="w-32">
+        <SelectTrigger className="w-20 md:w-32 h-10 md:h-12 px-2 md:px-3 rounded-full border-none glass-premium text-[10px] md:text-sm font-bold uppercase tracking-widest">
           <SelectValue placeholder={t('label')} />
         </SelectTrigger>
         <SelectContent>

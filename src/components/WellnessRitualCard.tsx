@@ -60,14 +60,14 @@ export function WellnessRitualCard() {
 
     if (!todayRitual) {
         return (
-            <Card className="glass-card border-none rounded-[3rem] overflow-hidden min-h-[400px] flex flex-col items-center justify-center text-center p-12 space-y-8 relative group">
+            <Card className="glass-card border-none rounded-[3rem] overflow-hidden min-h-[350px] md:min-h-[400px] flex flex-col items-center justify-center text-center p-6 md:p-12 space-y-6 md:space-y-8 relative group">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 pointer-events-none" />
-                <div className="w-24 h-24 bg-primary/10 rounded-[2rem] flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-500 shadow-xl">
-                    <Sparkles className="w-12 h-12" />
+                <div className="w-16 h-16 md:w-24 md:h-24 bg-primary/10 rounded-[1.5rem] md:rounded-[2rem] flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-500 shadow-xl">
+                    <Sparkles className="w-8 h-8 md:w-12 md:h-12" />
                 </div>
-                <div className="space-y-4 max-w-md relative z-10">
-                    <h3 className="text-3xl font-black font-headline text-foreground">{t('title')}</h3>
-                    <p className="text-muted-foreground font-medium">{t('subtitle')}</p>
+                <div className="space-y-2 md:space-y-4 max-w-md relative z-10">
+                    <h3 className="text-2xl md:text-3xl font-black font-headline text-foreground">{t('title')}</h3>
+                    <p className="text-sm md:text-muted-foreground font-medium">{t('subtitle')}</p>
                 </div>
                 <Magnetic strength={0.2}>
                     <Button
@@ -78,13 +78,13 @@ export function WellnessRitualCard() {
                     >
                         {isGenerating ? (
                             <>
-                                <Loader2 className="mr-3 h-6 w-6 animate-spin" />
-                                {t('generating')}
+                                <Loader2 className="mr-2 md:mr-3 h-5 w-5 md:h-6 md:w-6 animate-spin" />
+                                <span className="text-base md:text-lg">{t('generating')}</span>
                             </>
                         ) : (
                             <>
-                                <Sparkles className="mr-3 h-6 w-6" />
-                                {t('generate')}
+                                <Sparkles className="mr-2 md:mr-3 h-5 w-5 md:h-6 md:w-6" />
+                                <span className="text-base md:text-lg">{t('generate')}</span>
                             </>
                         )}
                     </Button>
@@ -109,10 +109,10 @@ export function WellnessRitualCard() {
             <CardHeader className="p-8 pb-4">
                 <div className="flex items-center justify-between">
                     <div className="space-y-1">
-                        <CardTitle className="text-3xl font-black font-headline text-foreground">
+                        <CardTitle className="text-2xl md:text-3xl font-black font-headline text-foreground">
                             {t('ritualFor', { name: userProfile?.name || 'You' })}
                         </CardTitle>
-                        <CardDescription className="text-primary font-bold uppercase tracking-widest text-[10px]">
+                        <CardDescription className="text-primary font-bold uppercase tracking-widest text-[8px] md:text-[10px]">
                             {new Date().toLocaleDateString(locale, { weekday: 'long', month: 'long', day: 'numeric' })}
                         </CardDescription>
                     </div>
@@ -122,26 +122,26 @@ export function WellnessRitualCard() {
                 </div>
             </CardHeader>
 
-            <CardContent className="p-8 pt-4 space-y-8">
+            <CardContent className="p-6 md:p-8 pt-0 md:pt-4 space-y-6 md:space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {items.map((item) => (
-                        <div key={item.id} className="flex gap-4 p-6 rounded-[2rem] bg-background/40 hover:bg-background transition-colors border border-primary/5">
-                            <div className={cn("flex-shrink-0 w-12 h-12 rounded-2xl bg-background flex items-center justify-center shadow-inner", item.color)}>
-                                <item.icon className="w-6 h-6" />
+                        <div key={item.id} className="flex gap-3 md:gap-4 p-4 md:p-6 rounded-[1.5rem] md:rounded-[2rem] bg-background/40 hover:bg-background transition-colors border border-primary/5">
+                            <div className={cn("flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-background flex items-center justify-center shadow-inner", item.color)}>
+                                <item.icon className="w-5 h-5 md:w-6 md:h-6" />
                             </div>
-                            <div className="space-y-1">
-                                <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">{item.label}</p>
-                                <p className="text-sm font-bold text-foreground leading-relaxed">{item.value}</p>
+                            <div className="space-y-0.5 md:space-y-1">
+                                <p className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">{item.label}</p>
+                                <p className="text-xs md:text-sm font-bold text-foreground leading-relaxed">{item.value}</p>
                             </div>
                         </div>
                     ))}
                 </div>
 
-                <div className="p-8 rounded-[2rem] bg-primary/10 border border-primary/20 flex items-start gap-4">
-                    <Info className="w-6 h-6 text-primary mt-1" />
-                    <div className="space-y-1">
-                        <p className="text-[10px] font-black uppercase tracking-widest text-primary/60">{t('benefit')}</p>
-                        <p className="text-lg font-bold text-primary leading-tight">
+                <div className="p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] bg-primary/10 border border-primary/20 flex items-start gap-3 md:gap-4">
+                    <Info className="w-5 h-5 md:w-6 md:h-6 text-primary mt-0.5 md:mt-1 shrink-0" />
+                    <div className="space-y-0.5 md:space-y-1">
+                        <p className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-primary/60">{t('benefit')}</p>
+                        <p className="text-base md:text-lg font-bold text-primary leading-tight">
                             {getLocalizedValue(todayRitual.benefit, locale)}
                         </p>
                     </div>

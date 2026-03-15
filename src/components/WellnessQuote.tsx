@@ -3,24 +3,17 @@
 import * as React from 'react';
 import { Quote } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-
-const QUOTES = [
-    "The food you eat can be either the safest and most powerful form of medicine or the slowest form of poison.",
-    "Health is not just what you're eating. It's also what you're thinking and saying.",
-    "A healthy outside starts from the inside.",
-    "Your body is a temple, but only if you treat it as one.",
-    "Yoga is not just about flexibility, it's about stability and peace.",
-    "Take care of your body. It's the only place you have to live.",
-    "To keep the body in good health is a duty... otherwise we shall not be able to keep our mind strong and clear."
-];
+import { useTranslations } from 'next-intl';
 
 export function WellnessQuote() {
+    const t = useTranslations('WellnessQuote');
     const [quote, setQuote] = React.useState("");
 
     React.useEffect(() => {
-        const randomQuote = QUOTES[Math.floor(Math.random() * QUOTES.length)];
+        const quotes = t.raw('quotes') as string[];
+        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
         setQuote(randomQuote);
-    }, []);
+    }, [t]);
 
     return (
         <Card className="glass dark:glass-dark group hover:shadow-[0_20px_50px_rgba(var(--primary),0.05)] transition-all duration-700 overflow-hidden min-h-[180px] flex items-center border-none rounded-[2.5rem] relative">

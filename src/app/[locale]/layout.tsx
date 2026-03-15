@@ -8,6 +8,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { ChronoThemeProvider } from '@/components/ChronoThemeProvider';
 import { ChatBot } from '@/components/ChatBot';
 import { PulseAI } from '@/components/PulseAI';
+import { InstallPWA } from '@/components/InstallPWA';
 
 export const metadata: Metadata = {
   title: 'DailyDine Plus | Your Holistic Wellness Companion',
@@ -75,12 +76,13 @@ export default async function LocaleLayout({
           }}
         />
       </head>
-      <body className={cn('font-body antialiased min-h-screen')}>
+      <body className={cn('font-body antialiased min-h-screen')} suppressHydrationWarning>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ChronoThemeProvider>
             {children}
             <ChatBot />
             <PulseAI />
+            <InstallPWA />
             <Toaster />
           </ChronoThemeProvider>
         </NextIntlClientProvider>

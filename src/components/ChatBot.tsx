@@ -100,23 +100,25 @@ export function ChatBot() {
     <>
       <div
         className={cn(
-          'fixed bottom-4 right-4 z-50 transition-all duration-300 ease-in-out',
-          isOpen && 'pointer-events-none opacity-0'
+          'fixed right-6 md:right-8 z-50 transition-all duration-300 ease-in-out',
+          isOpen && 'pointer-events-none opacity-0',
+          // Move up on mobile to avoid PWA banner
+          'bottom-32 md:bottom-12'
         )}
       >
         <Button
           size="lg"
-          className="h-16 w-16 rounded-full shadow-lg"
+          className="h-14 w-14 md:h-16 md:w-16 rounded-full shadow-lg"
           onClick={handleToggle}
         >
-          <MessageSquare className="h-8 w-8" />
+          <MessageSquare className="h-6 w-6 md:h-8 md:w-8" />
           <span className="sr-only">{t('openChat')}</span>
         </Button>
       </div>
 
       <div
         className={cn(
-          'fixed bottom-4 right-4 z-[100] w-full max-w-sm transition-all duration-500 ease-in-out sm:bottom-8 sm:right-8',
+          'fixed bottom-4 right-4 z-[100] w-[calc(100vw-2rem)] sm:w-80 max-w-[calc(100vw-2rem)] sm:max-w-sm transition-all duration-500 ease-in-out sm:bottom-12 sm:right-8',
           !isOpen
             ? 'translate-y-[calc(100%+2rem)] opacity-0 pointer-events-none'
             : 'translate-y-0 opacity-100'

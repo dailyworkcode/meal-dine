@@ -6,6 +6,7 @@ import { Medal, Trophy, Star, Droplets, Zap, Wind, Target } from 'lucide-react';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { cn, getTodayKey } from '@/lib/utils';
+import { useTranslations } from 'next-intl';
 
 interface Badge {
     id: string;
@@ -17,6 +18,7 @@ interface Badge {
 }
 
 export function AchievementGallery() {
+    const t = useTranslations('AchievementGallery');
     const [habits] = useLocalStorage<any>('dailyHabits', {});
     const [waterIntake] = useLocalStorage<any>('waterIntake', {});
     const today = getTodayKey();
@@ -67,7 +69,7 @@ export function AchievementGallery() {
             <CardHeader className="pb-2">
                 <CardTitle className="flex items-center gap-2 text-sm font-black uppercase tracking-[0.2em] text-foreground/70">
                     <Trophy className="w-4 h-4 text-primary" />
-                    Ascension Gallery
+                    {t('title')}
                 </CardTitle>
             </CardHeader>
             <CardContent className="p-8">
@@ -102,10 +104,10 @@ export function AchievementGallery() {
                                         "text-xs font-black uppercase tracking-tighter mb-1",
                                         badge.isUnlocked ? "text-foreground" : "text-muted-foreground"
                                     )}>
-                                        {badge.title}
+                                        {t(`${badge.id}.title`)}
                                     </p>
                                     <p className="text-[10px] text-muted-foreground/60 leading-tight">
-                                        {badge.description}
+                                        {t(`${badge.id}.description`)}
                                     </p>
                                 </div>
                                 {badge.isUnlocked && (

@@ -13,6 +13,7 @@ import { toast } from '@/hooks/use-toast';
 import { Shield, Sparkles as SparklesIcon, Globe } from 'lucide-react';
 
 export function SocialHub() {
+    const t = useTranslations('SocialHub');
     const { xp, level, awardXP, XP_ACTIONS } = useXP();
     const [friends, setFriends] = React.useState<Friend[]>(MOCK_FRIENDS);
     const [isSharing, setIsSharing] = React.useState(false);
@@ -20,8 +21,8 @@ export function SocialHub() {
     const handleShare = async () => {
         setIsSharing(true);
         const shareData = {
-            title: 'DailyDine Plus - My Warrior Status',
-            text: `I've reached Level ${level} on DailyDine! Build healthy habits with me.`,
+            title: t('shareTitle'),
+            text: t('shareText', { level }),
             url: window.location.origin,
         };
 
@@ -30,14 +31,14 @@ export function SocialHub() {
                 await navigator.share(shareData);
                 awardXP(XP_ACTIONS.SOCIAL_SHARE);
                 toast({
-                    title: "Status Shared!",
-                    description: "You've earned 50 XP for spreading the word.",
+                    title: t('statusShared'),
+                    description: t('statusSharedDesc'),
                 });
             } else {
                 await navigator.clipboard.writeText(`${shareData.text} ${shareData.url}`);
                 toast({
-                    title: "Copied to Clipboard!",
-                    description: "Share the link with your friends to earn points.",
+                    title: t('copied'),
+                    description: t('copiedDesc'),
                 });
             }
         } catch (err) {
@@ -56,8 +57,8 @@ export function SocialHub() {
                             <Users className="w-6 h-6" />
                         </div>
                         <div>
-                            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-600">The Arena</p>
-                            <h3 className="text-3xl font-black font-headline tracking-tighter">Social Hub</h3>
+                            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-600">{t('arena')}</p>
+                            <h3 className="text-3xl font-black font-headline tracking-tighter">{t('title')}</h3>
                         </div>
                     </div>
                     <Button
@@ -66,7 +67,7 @@ export function SocialHub() {
                         className="rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold h-12 px-6 gap-2 shadow-lg shadow-indigo-200"
                     >
                         <Share2 className={cn("w-4 h-4", isSharing && "animate-spin")} />
-                        Share Progress
+                        {t('shareProgress')}
                     </Button>
                 </div>
             </CardHeader>
@@ -75,8 +76,8 @@ export function SocialHub() {
                     {/* Mini Leaderboard */}
                     <div className="space-y-4">
                         <div className="flex items-center justify-between text-[11px] font-black uppercase tracking-widest text-muted-foreground/60 px-2">
-                            <span>Top Warriors</span>
-                            <span>Level</span>
+                            <span>{t('topWarriors')}</span>
+                            <span>{t('level')}</span>
                         </div>
                         <div className="grid gap-3">
                             {/* User Self-Rank */}
@@ -87,10 +88,10 @@ export function SocialHub() {
                             >
                                 <div className="flex items-center gap-4">
                                     <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary font-black">
-                                        YOU
+                                        {t('you')}
                                     </div>
                                     <div>
-                                        <p className="font-bold text-sm">Vitality Guardian</p>
+                                        <p className="font-bold text-sm">{t('status')}</p>
                                         <div className="flex items-center gap-2 opacity-60">
                                             <Zap className="w-3 h-3 text-amber-500" />
                                             <span className="text-[10px] font-black">{xp} XP</span>
@@ -121,7 +122,7 @@ export function SocialHub() {
                                             {friend.streak > 0 && (
                                                 <div className="flex items-center gap-1 text-orange-600">
                                                     <Flame className="w-3 h-3 fill-orange-600" />
-                                                    <span className="text-[10px] font-black">{friend.streak} Streak</span>
+                                                    <span className="text-[10px] font-black">{t('streak', { streak: friend.streak })}</span>
                                                 </div>
                                             )}
                                         </div>
@@ -137,19 +138,19 @@ export function SocialHub() {
 
                     <Button variant="ghost" className="w-full rounded-[1.5rem] h-14 border-dashed border-2 border-muted-foreground/10 hover:bg-indigo-500/5 hover:text-indigo-600 hover:border-indigo-500/20 gap-2 font-black uppercase text-xs tracking-widest transition-all">
                         <UserPlus className="w-4 h-4" />
-                        Find Combatants
+                        {t('findCombatants')}
                     </Button>
 
                     {/* Community Clans */}
                     <div className="pt-6 border-t border-primary/5 space-y-4">
                         <div className="flex items-center gap-2">
                             <Shield className="w-4 h-4 text-emerald-500" />
-                            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-600">Active Clan: Zen Seekers</p>
+                            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-600">{t('activeClan', { clan: 'Zen Seekers' })}</p>
                         </div>
                         <div className="p-5 bg-gradient-to-br from-emerald-500/10 to-teal-500/5 rounded-[2rem] border border-emerald-500/10">
                             <div className="flex justify-between items-center mb-3">
-                                <span className="text-xs font-bold">Clan Daily Goal: 10k XP</span>
-                                <span className="text-[10px] font-black text-emerald-600">7,400 / 10,000</span>
+                                <span className="text-xs font-bold">{t('clanGoal', { goal: '10k XP' })}</span>
+                                <span className="text-[10px] font-black text-emerald-600">{t('progress', { current: '7,400', target: '10,000' })}</span>
                             </div>
                             <div className="h-2 w-full bg-emerald-500/10 rounded-full overflow-hidden">
                                 <motion.div
@@ -158,7 +159,7 @@ export function SocialHub() {
                                     className="h-full bg-emerald-500"
                                 />
                             </div>
-                            <p className="text-[9px] text-muted-foreground mt-3 font-medium italic">"United in tranquility, stronger in health."</p>
+                            <p className="text-[9px] text-muted-foreground mt-3 font-medium italic">{t('clanMotto')}</p>
                         </div>
                     </div>
                 </div>
