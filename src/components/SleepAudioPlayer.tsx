@@ -9,19 +9,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const AUDIO_TRACKS = [
     {
-        title: "Deep Sleep Ambient",
-        description: "Gentle rain to help synchronize your brainwaves.",
-        url: "https://cdn.pixabay.com/download/audio/2021/08/09/audio_924a6cd250.mp3?filename=rain-and-thunder-16705.mp3"
+        title: "Rain on Roof",
+        description: "Gentle rhythmic rain for deep focus and sleep.",
+        url: "https://actions.google.com/sounds/v1/weather/rain_on_roof.ogg"
     },
     {
-        title: "Tranquil Ocean",
-        description: "Calm ocean waves washing over a peaceful shore.",
-        url: "https://cdn.pixabay.com/download/audio/2021/08/09/audio_d0cf1f516d.mp3?filename=ocean-waves-112906.mp3"
+        title: "Ocean Waves",
+        description: "Calm waves crashing on a rocky beach.",
+        url: "https://actions.google.com/sounds/v1/water/waves_crashing_on_rock_beach.ogg"
     },
     {
-        title: "Forest Ambience",
-        description: "Soothing sounds of nature deep within a tranquil forest.",
-        url: "https://cdn.pixabay.com/download/audio/2022/03/24/audio_d4c94cdbe3.mp3?filename=forest-with-small-river-birds-and-nature-field-recording-6735.mp3"
+        title: "Calm Kalimba",
+        description: "Soft, melodic kalimba for peaceful relaxation.",
+        url: "https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3"
     }
 ];
 
